@@ -19,14 +19,14 @@ class CategoryCard extends ConsumerWidget {
       int doneTask = 0;
       int totalTask = 0;
 
-      tasks.forEach((tsk) {
+      for (var tsk in tasks) {
         if (tsk.category == title) {
           totalTask++;
           if (tsk.isDone) {
             doneTask++;
           }
         }
-      });
+      }
       final double? progress = totalTask > 0 ? (doneTask / totalTask) * 152 : 0;
 
       return Center(

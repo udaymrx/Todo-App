@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final ukey = UniqueKey();
     _fields.add(ukey);
     addTextFields(ukey);
-    print(_fields);
+    debugPrint("$_fields");
     setState(() {});
   }
 
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final index = _fields.indexOf(id);
     _textFields.removeAt(index);
     _fields.remove(id);
-    print(_fields);
+    debugPrint("$_fields");
     setState(() {});
   }
 

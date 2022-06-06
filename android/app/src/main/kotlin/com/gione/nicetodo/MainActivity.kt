@@ -1,4 +1,4 @@
-package com.example.freezed_practice
+package com.gione.nicetodo
 
 import io.flutter.embedding.android.FlutterActivity
 
