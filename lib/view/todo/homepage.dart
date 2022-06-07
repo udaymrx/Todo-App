@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_practice/const/colors.dart';
-import 'package:freezed_practice/todo/provider/task_controller.dart';
-import 'package:freezed_practice/view/todo/add_task_page.dart';
-import 'package:freezed_practice/view/widgets/category_card.dart';
-import 'package:freezed_practice/view/widgets/todo_tile.dart';
+import 'package:nicetodo/const/colors.dart';
+import 'package:nicetodo/todo/provider/task_controller.dart';
+import 'package:nicetodo/view/todo/add_task_page.dart';
+import 'package:nicetodo/view/widgets/category_card.dart';
+import 'package:nicetodo/view/widgets/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

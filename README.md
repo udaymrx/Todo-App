@@ -1,4 +1,4 @@
-# freezed_practice
+# nicetodo
 
 A new Flutter project.
 

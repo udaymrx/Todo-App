@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_practice/const/colors.dart';
-import 'package:freezed_practice/todo/provider/task_controller.dart';
-import 'package:freezed_practice/todo/state/task_state.dart';
-import 'package:freezed_practice/util/unique_id.dart';
+import 'package:nicetodo/const/colors.dart';
+import 'package:nicetodo/todo/provider/task_controller.dart';
+import 'package:nicetodo/todo/state/task_state.dart';
+import 'package:nicetodo/util/unique_id.dart';
 
 class AddTaskPage extends ConsumerStatefulWidget {
   const AddTaskPage({Key? key}) : super(key: key);

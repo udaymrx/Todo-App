@@ -1,6 +1,6 @@
 {
-    "name": "freezed_practice",
-    "short_name": "freezed_practice",
+    "name": "nicetodo",
+    "short_name": "nicetodo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

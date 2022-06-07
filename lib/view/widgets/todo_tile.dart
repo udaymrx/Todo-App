@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_practice/const/colors.dart';
-import 'package:freezed_practice/todo/provider/task_controller.dart';
+import 'package:nicetodo/const/colors.dart';
+import 'package:nicetodo/todo/provider/task_controller.dart';
 
 import '../../todo/state/task_state.dart';
 

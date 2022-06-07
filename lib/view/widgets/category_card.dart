@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_practice/const/colors.dart';
+import 'package:nicetodo/const/colors.dart';
 
 import '../../todo/provider/task_controller.dart';
 

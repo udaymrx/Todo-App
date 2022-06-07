@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(freezed_practice LANGUAGES CXX)
+project(nicetodo LANGUAGES CXX)
 
-set(BINARY_NAME "freezed_practice")
+set(BINARY_NAME "nicetodo")
 
 cmake_policy(SET CMP0063 NEW)
 
