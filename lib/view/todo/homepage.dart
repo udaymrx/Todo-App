@@ -1,7 +1,10 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nicetodo/const/colors.dart';
+import 'package:nicetodo/router/router.gr.dart';
 import 'package:nicetodo/todo/provider/task_controller.dart';
 import 'package:nicetodo/view/todo/add_task_page.dart';
 import 'package:nicetodo/view/widgets/category_card.dart';
@@ -17,6 +20,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -24,7 +29,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: background,
         foregroundColor: black,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () async {
+            context.pushRoute(const SettingsRoute());
+            // await FirebaseAuth.instance.signOut();
+          },
           icon: const Icon(Icons.drag_handle_outlined),
         ),
         leadingWidth: 70,
@@ -48,7 +56,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 20),
               child: Text(
-                "What's up, Joy!",
+                "What's up, ${user?.email ?? "Joy"}!",
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: const Color(0xff2d3252)),

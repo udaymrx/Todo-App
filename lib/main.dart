@@ -1,24 +1,38 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'view/todo/homepage.dart';
+import 'router/router.gr.dart';
+import 'util/service/shared_prefrence.dart';
 
-void main() {
-  runApp(const ProviderScope(child: MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
+  await UserPreferences.init();
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'NiceToDo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
       ),
-      home: const HomePage(),
+      routerDelegate: AutoRouterDelegate(
+        _appRouter,
+      ),
+      routeInformationProvider: _appRouter.routeInfoProvider(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "647836823380",
+    "project_id": "nicetodo-4bb94",
+    "storage_bucket": "nicetodo-4bb94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647836823380:android:4f963ace779b7294b5e2c1",
+        "android_client_info": {
+          "package_name": "com.gione.nicetodo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYhAAWByY9UEJASWVWThL9724_rHn9B0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
