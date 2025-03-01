@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseService {
   FirebaseAuth auth = FirebaseAuth.instance;
+  GoogleSignIn googleSignIn = GoogleSignIn();
 
   Future<void> signInWithLink(String email) async {
     ActionCodeSettings actionCodeSettings = ActionCodeSettings(
@@ -50,5 +52,27 @@ class FirebaseService {
     } catch (error) {
       debugPrint("Error reauthenticating credential.");
     }
+  }
+
+  Future<void> googleLogin() async {
+    final googleUser = await googleSignIn.signIn();
+
+    final googleAuth = await googleUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+      accessToken: googleAuth.accessToken,
+    );
+
+    await auth.signInWithCredential(credential);
+  }
+
+  Future<void> logOut() async {
+    final isGoogle = await googleSignIn.isSignedIn();
+
+    if (isGoogle) {
+      await googleSignIn.disconnect();
+    }
+    await auth.signOut();
   }
 }

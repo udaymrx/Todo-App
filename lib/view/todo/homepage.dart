@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 20),
               child: Text(
-                "What's up, ${user?.email ?? "Joy"}!",
+                "What's up, ${user?.displayName ?? "Joy"} !",
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: const Color(0xff2d3252)),

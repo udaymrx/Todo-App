@@ -36,3 +36,31 @@ void showLoading(BuildContext context, {String? message}) {
     },
   );
 }
+
+void showMessage(BuildContext context, {required String message}) {
+  showDialog(
+    context: context,
+    barrierDismissible: true,
+    builder: (context) {
+      return Dialog(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        
+        child: Center(
+            child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          decoration: BoxDecoration(
+              color: background, borderRadius: BorderRadius.circular(12)),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(
+              message,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+          ),
+        )),
+      );
+    },
+  );
+}

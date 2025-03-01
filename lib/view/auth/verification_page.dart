@@ -53,7 +53,6 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
     } catch (e) {
       debugPrint(e.toString());
     }
-    super.didChangeDependencies();
   }
 
   void checkVerification() async {
@@ -63,7 +62,7 @@ class _VerificationPageState extends ConsumerState<VerificationPage> {
       Navigator.pop(context);
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

@@ -1,11 +1,9 @@
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nicetodo/global_provider.dart';
 import 'package:nicetodo/util/text_validation/text_validation.dart';
 import 'package:nicetodo/view/widgets/loading_dialog.dart';
-
-import '../../router/router.gr.dart';
 
 class SignInPage extends ConsumerStatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -24,7 +22,45 @@ class _SignInPageState extends ConsumerState<SignInPage> {
       showLoading(context);
       await ref.read(firebaseProvider).signInWithLink(email);
       Navigator.pop(context);
-      context.pushRoute(VerificationRoute(email: email));
+      showMessage(
+        context,
+        message: "We have sent a verification mail on your email address.\n"
+            "Please click on the link provided in the email and verify yourself to proceed.",
+      );
+      listenLogin();
+    }
+  }
+
+  Future<void> googleLogin() async {
+    await ref.read(firebaseProvider).googleLogin();
+  }
+
+  void listenLogin() async {
+    try {
+      FirebaseDynamicLinks.instance.onLink.listen(
+          (PendingDynamicLinkData? dynamicLink) async {
+        final Uri? deepLink = dynamicLink?.link;
+        if (deepLink != null) {
+          final user = await ref
+              .read(firebaseProvider)
+              .verifyEmail(email: email, emailLink: deepLink.toString());
+          if (user != null) {
+            Navigator.pop(context);
+          }
+        }
+      }, onError: (e) async {
+        debugPrint(e.message);
+      });
+
+      final PendingDynamicLinkData? data =
+          await FirebaseDynamicLinks.instance.getInitialLink();
+      final Uri? deepLink = data?.link;
+
+      if (deepLink != null) {
+        debugPrint(deepLink.userInfo);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
     }
   }
 
@@ -110,7 +146,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 6),
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: googleLogin,
                         icon: Image.asset("assets/images/google_logo.png")),
                   ),
                   const SizedBox(width: 16),
